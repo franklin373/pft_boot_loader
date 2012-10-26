@@ -1,0 +1,11 @@
+*.o
+*.a
+*~
+*.out
+*.i
+*.map
+*.pbd
+*.d
+*.hex
+*.bak
+Obj/

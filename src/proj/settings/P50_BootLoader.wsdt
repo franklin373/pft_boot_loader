@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Workspace>
+  <ConfigDictionary>
+    
+  <CurrentConfigs><Project>P50_BootLoader/Flash</Project></CurrentConfigs></ConfigDictionary>
+  <Desktop>
+    <Static>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>281</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+      </Workspace>
+    <Build><ColumnWidth0>20</ColumnWidth0><ColumnWidth1>803</ColumnWidth1><ColumnWidth2>214</ColumnWidth2><ColumnWidth3>53</ColumnWidth3></Build><TerminalIO/></Static>
+    <Windows>
+      
+    <Wnd2>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-32366-13163</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>P50_BootLoader</ExpandedNode><ExpandedNode>P50_BootLoader/Drivers</ExpandedNode><ExpandedNode>P50_BootLoader/Main</ExpandedNode><ExpandedNode>P50_BootLoader/Output</ExpandedNode><ExpandedNode>P50_BootLoader/Readme</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd3><Tabs><Tab><Identity>TabID-26137-32316</Identity><TabName>Build</TabName><Factory>Build</Factory><Session/></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd3></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane/><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-02a88e70><key>iaridepm.enu1</key></Toolbar-02a88e70></Sizes></Row0><Row1><Sizes><Toolbar-02aec5c0><key>debuggergui.enu1</key></Toolbar-02aec5c0></Sizes></Row1><Row2><Sizes><Toolbar-02aeca70><key>armjlink.enu1</key></Toolbar-02aeca70></Sizes></Row2></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>301</Bottom><Right>355</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>176367</sizeHorzCX><sizeHorzCY>365631</sizeHorzCY><sizeVertCX>314815</sizeVertCX><sizeVertCY>553931</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>198</Bottom><Right>1136</Right><x>-2</x><y>-2</y><xscreen>1138</xscreen><yscreen>200</yscreen><sizeHorzCX>1003527</sizeHorzCX><sizeHorzCY>365631</sizeHorzCY><sizeVertCX>176367</sizeVertCX><sizeVertCY>365631</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Workspace>
+
+
