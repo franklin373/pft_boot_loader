@@ -18,8 +18,25 @@
  **********************************************************************/
 #include "lpc177x_8x_uart.h"
 #include "lpc177x_8x_pinsel.h"
+#include "global.h"
+#include "taskfrag/taskfrag.h"
+#include "rcv_single_buf/rcv_single_buf.h"
+#include "flash/norflash_sst39vf6401b.h"
+#include "flash/flash_common.h"
 
 /************************** PRIVATE DEFINTIONS *************************/
+
+
+
+#define P25VER "1.0.1"
+
+
+char*	strNowDate = __DATE__;
+char* 	strNowTime = __TIME__;
+
+
+
+#if 0
 #define UART_TEST_NUM		0
 #if (UART_TEST_NUM == 0)
 #define	_LPC_UART			(LPC_UART_TypeDef *)LPC_UART0
@@ -29,6 +46,7 @@
 #define _LPC_UART			LPC_UART2
 #define _UART_IRQ			UART2_IRQn
 #define _UART_IRQHander		UART2_IRQHandler
+#endif
 #endif
 /* buffer size definition */
 #define UART_RING_BUFSIZE 256
@@ -85,6 +103,7 @@ uint32_t UARTReceive(LPC_UART_TypeDef *UARTPort, uint8_t *rxbuf, uint8_t buflen)
 uint32_t UARTSend(LPC_UART_TypeDef *UARTPort, uint8_t *txbuf, uint8_t buflen);
 void print_menu(void);
 
+#if 0
 /*----------------- INTERRUPT SERVICE ROUTINES --------------------------*/
 /*********************************************************************//**
  * @brief		UART0 interrupt handler sub-routine
@@ -153,7 +172,6 @@ void UART_IntReceive(void)
 		}
 	}
 }
-
 /********************************************************************//**
  * @brief 		UART transmit function (ring buffer used)
  * @param[in]	None
@@ -194,7 +212,6 @@ void UART_IntTransmit(void)
     }
 }
 
-
 /*********************************************************************//**
  * @brief		UART Line Status Error
  * @param[in]	bLSErrType	UART Line Status Error Type
@@ -209,7 +226,9 @@ void UART_IntErr(uint8_t bLSErrType)
 		test = bLSErrType;
 	}
 }
+#endif
 
+#if 0//to simplify program, if using UART, do not need send by interrupt
 /*-------------------------PRIVATE FUNCTIONS------------------------------*/
 /*********************************************************************//**
  * @brief		UART transmit function for interrupt mode (using ring buffers)
@@ -263,7 +282,7 @@ uint32_t UARTSend(LPC_UART_TypeDef *UARTPort, uint8_t *txbuf, uint8_t buflen)
 
     return bytes;
 }
-
+#endif
 
 /*********************************************************************//**
  * @brief		UART read function for interrupt mode (using ring buffers)
@@ -312,6 +331,7 @@ uint32_t UARTReceive(LPC_UART_TypeDef *UARTPort, uint8_t *rxbuf, uint8_t buflen)
  **********************************************************************/
 void print_menu(void)
 {
+#if 0
 	uint32_t tmp, tmp2;
 	uint8_t *pDat;
 
@@ -332,8 +352,14 @@ void print_menu(void)
 		pDat += tmp2;
 		tmp -= tmp2;
 	}
+#else
+	LPC_UartPrintf(PRN_DEV_WIRE,menu1);
+	LPC_UartPrintf(PRN_DEV_WIRE,menu2);
+#endif
 }
-
+struct tagTF_Define tf_define_array[]={
+	{1000/TICK_PERIOD,tf_rcv_single_buf},
+};
 /*-------------------------MAIN FUNCTION------------------------------*/
 /*********************************************************************//**
  * @brief		c_entry: Main UART program body
@@ -342,6 +368,7 @@ void print_menu(void)
  **********************************************************************/
 int c_entry(void)
 {
+#if 0
 	// UART Configuration structure variable
 	UART_CFG_Type UARTConfigStruct;
 	// UART FIFO configuration Struct variable
@@ -384,7 +411,7 @@ int c_entry(void)
 	 * 1 Stop bit
 	 * None parity
 	 */
-	UART_ConfigStructInit(&UARTConfigStruct);
+	UART_ConfigStructInit(&UARTConfigStruct,115200);
 
 	// Initialize UART0 peripheral with given to corresponding parameter
 	UART_Init((LPC_UART_TypeDef *)_LPC_UART, &UARTConfigStruct);
@@ -427,11 +454,47 @@ int c_entry(void)
     NVIC_SetPriority(_UART_IRQ, ((0x01<<3)|0x01));
 	/* Enable Interrupt for UART0 channel */
     NVIC_EnableIRQ(_UART_IRQ);
-
+#else
+	tick_init();
+//	pkg_fifo_init();
+	comm_init(PRN_DEV_WIRE,115200,cb_4_rcv_intr);
+#endif
+	comm_init(PRN_DEV_LOG,115200,NULL);
+	debug_frmwrk_init();
 
 	// print welcome screen
 	print_menu();
 
+
+
+    _DBG("P25 BootLoader Version: ");
+    _DBG(P25VER);
+    _DBG("\r\n");
+    _DBG("Compile Date:");
+    _DBG(strNowDate);
+    _DBG("\r\n");
+    _DBG("Compile Time:");
+    _DBG(strNowTime);
+    _DBG("\r\n");
+
+
+	
+	_DBG_("Program Starting...");
+	LPC_UartPrintf(PRN_DEV_LOG,"Init NOR Flash...\r\n");
+	LPC_UartPrintf(PRN_DEV_WIRE,"Init NOR Flash...\r\n");
+    NORFLASHInit();
+    
+    LPC_UartPrintf(PRN_DEV_WIRE,"Read NOR Flash ID...\r\n");
+    if ( NORFLASHCheckID() == FALSE )
+    {
+    	LPC_UartPrintf(PRN_DEV_WIRE,"Error in reading NOR Flash ID, testing terminated!\r\n");
+    	while ( 1 );		// Fatal error
+    }
+    LPC_UartPrintf(PRN_DEV_WIRE,"NOR Flash ID read OK");
+
+	ASSERT_MINE(0==flash_intf_init());
+	flash_disp_for_debug();
+#if 0
 	// reset exit flag
 	exitflag = RESET;
 
@@ -472,9 +535,14 @@ int c_entry(void)
 
     // DeInitialize UART0 peripheral
     UART_DeInit(_LPC_UART);
+#endif
+
+	ASSERT_MINE(0==TF_init(tf_define_array,ARR_SIZE(tf_define_array)));
 
     /* Loop forever */
-    while(1);
+    while(1){
+		TF_dispatch();
+    }
     return 1;
 }
 

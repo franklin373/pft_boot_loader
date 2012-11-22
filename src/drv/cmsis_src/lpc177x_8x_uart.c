@@ -391,9 +391,9 @@ void UART_DeInit(LPC_UART_TypeDef* UARTx)
 *                    which will be initialized.
 * @return		None
 *******************************************************************************/
-void UART_ConfigStructInit(UART_CFG_Type *UART_InitStruct)
+void UART_ConfigStructInit(UART_CFG_Type *UART_InitStruct,int baud_rate)
 {
-	UART_InitStruct->Baud_rate = 9600;
+	UART_InitStruct->Baud_rate = (uint32_t)baud_rate;
 
 	UART_InitStruct->Databits = UART_DATABIT_8;
 
@@ -447,7 +447,7 @@ uint8_t UART_ReceiveByte(LPC_UART_TypeDef* UARTx)
 		return (UARTx->RBR & UART_RBR_MASKBIT);
 	}
 }
-
+#if 0
 /*********************************************************************//**
  * @brief		Send a block of data via UART peripheral
  * @param[in]	UARTx	Selected UART peripheral used to send data, should be:
@@ -539,7 +539,7 @@ uint32_t UART_Send(LPC_UART_TypeDef *UARTx, uint8_t *txbuf,
 
 	return bSent;
 }
-
+#endif
 /*********************************************************************//**
  * @brief		Receive a block of data via UART peripheral
  * @param[in]	UARTx	Selected UART peripheral used to send data,
@@ -1285,7 +1285,7 @@ void UART_RS485ReceiverCmd(LPC_UART_TypeDef *UARTx, FunctionalState NewState)
 		UARTx->RS485CTRL |= UART1_RS485CTRL_RX_DIS;
 	}
 }
-
+#if 0
 /*********************************************************************//**
  * @brief		Send data on RS485 bus with specified parity stick value (9-bit mode).
  * @param[in]	UARTx	LPC_UART1 (only)
@@ -1323,7 +1323,6 @@ uint32_t UART_RS485Send(LPC_UART_TypeDef *UARTx, uint8_t *pDatFrm,
 
 	return cnt;
 }
-
 /*********************************************************************//**
  * @brief		Send Slave address frames on RS485 bus.
  * @param[in]	UARTx	LPC_UART1 (only)
@@ -1346,6 +1345,7 @@ uint32_t UART_RS485SendData(LPC_UART_TypeDef *UARTx, uint8_t *pData, uint32_t si
 {
 	return (UART_RS485Send(UARTx, pData, size, 0));
 }
+#endif
 
 /**
  * @}

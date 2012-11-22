@@ -46,6 +46,7 @@
 
         EXTERN  __iar_program_start
         EXTERN  SystemInit
+        EXTERN  system_manu_cp
         PUBLIC  __vector_table
         PUBLIC  __vector_table_0x1c
         PUBLIC  __Vectors
@@ -136,6 +137,8 @@ __Vectors_Size 	EQU 	__Vectors_End - __Vectors
         SECTION .text:CODE:REORDER(2)
 Reset_Handler
         LDR     R0, =SystemInit
+        BLX     R0
+        LDR     R0, =system_manu_cp
         BLX     R0
         LDR     R0, =__iar_program_start
         BX      R0

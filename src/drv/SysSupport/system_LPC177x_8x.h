@@ -39,6 +39,8 @@ extern uint32_t EMCClock;			        /*!< EMC Clock                              
 extern uint32_t USBClock;			        /*!< USB Frequency 						              */
 extern uint32_t SPIFIClock;			      /*!< SPI Flash Interface Frequency 		      */
 
+#define __RAM_MODE__
+
 /**
  * Initialize the system
  *

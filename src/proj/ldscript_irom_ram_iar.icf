@@ -1,0 +1,112 @@
+/*###ICF### Section handled by ICF editor, don't touch! ****/
+/*-Editor annotation file-*/
+/* IcfEditorFile="$TOOLKIT_DIR$\config\ide\IcfEditor\cortex_v1_0.xml" */
+/*-Specials-*/
+define symbol __ICFEDIT_intvec_start__ = 0x00000000;
+/*-Memory Regions-*/
+define symbol __ICFEDIT_region_ROM_start__ = 0x00000000;
+define symbol __ICFEDIT_region_ROM_end__   = 0x0007FFFF;
+define symbol __ICFEDIT_region_RAM_start__ = 0x10000140;
+define symbol __ICFEDIT_region_RAM_end__   = 0x1000FFFF;
+/*-Sizes-*/
+define symbol __ICFEDIT_size_cstack__ = 0x400;
+define symbol __ICFEDIT_size_heap__   = 0x200;
+/**** End of ICF editor section. ###ICF###*/
+
+define memory mem with size = 4G;
+define region ROM_region   = mem:[from __ICFEDIT_region_ROM_start__   to __ICFEDIT_region_ROM_end__];
+define region RAM_region   = mem:[from __ICFEDIT_region_RAM_start__   to __ICFEDIT_region_RAM_end__];
+
+define symbol _AHB_RAM_start__  = 0x20080000;
+define symbol _AHB_RAM_end__    = 0x200BFFFF;
+define region AHB_RAM_region = mem:[from _AHB_RAM_start__ to _AHB_RAM_end__];
+
+define block CSTACK    with alignment = 8, size = __ICFEDIT_size_cstack__   { };
+define block HEAP      with alignment = 8, size = __ICFEDIT_size_heap__     { };
+/*
+	section .text object app_main.o,section .rodata object app_main.o,
+	section .text object assert_mine.o,section .rodata object assert_mine.o,
+	section .text object P25_protocol.o,section .rodata object P25_protocol.o
+	section .text object app_main.o,
+	section .text object assert_mine.o,
+	section .text object P25_protocol.o
+*/	
+/*
+define block RAMCODE {
+	object app_main.o,
+	object assert_mine.o,
+	object P25_protocol.o,
+	}except{
+	section .text_init,
+	section .data_init,
+	section .rodata_init
+	};
+*/
+/*cannot using block in initialize brace, for it is Extended-selectors, not section-selectors*/
+/*
+initialize by copy{readwrite,
+	object app_main.o,
+	object assert_mine.o,
+	object P25_protocol.o,
+	object P25_protocol_msr.o,
+	object cb_4_rcv_intr.o,
+	object tf_rcv_single_buf.o,
+	object tf_core.o,
+	object debug_frmwrk.o,
+	object lpc177x_8x_emc.o,
+	object lpc177x_8x_pinsel.o,
+	object lpc177x_8x_systick.o,
+	object lpc177x_8x_timer.o,
+	object lpc177x_8x_uart.o,
+	object flash_1788.o,
+	object flash_facade.o,
+	object flash_sst39vf6401b.o,
+	object IAP.o,
+	object norflash_sst39vf6401b.o,
+	object core_cm3.o,
+	object os_cpu_a.o,
+	object tick.o,
+	object comm_api.o,
+	object uartDrv.o,
+	object uartInt.o,
+
+	object xprintffull.o
+	};
+*/	
+initialize by copy{readwrite,
+	ro object app_main.o,
+	ro object assert_mine.o,
+	ro object P25_protocol.o,
+	ro object P25_protocol_msr.o,
+	ro object cb_4_rcv_intr.o,
+	ro object tf_rcv_single_buf.o,
+	ro object tf_core.o,
+	ro object lpc177x_8x_uart.o,
+	ro object lpc177x_8x_emc.o,
+	ro object lpc177x_8x_pinsel.o,
+	ro object lpc177x_8x_systick.o,
+	ro object lpc177x_8x_timer.o,
+	ro object debug_frmwrk.o,
+	ro object flash_1788.o,
+	ro object flash_facade.o,
+	ro object flash_sst39vf6401b.o,
+	ro object IAP.o,
+	ro object norflash_sst39vf6401b.o,
+	ro object core_cm3.o,
+	ro object os_cpu_a.o,
+	ro object tick.o,
+	ro object comm_api.o,
+	ro object uartDrv.o,
+	ro object uartInt.o,
+
+	ro object xprintffull.o
+	};
+do not initialize  { section .noinit };
+
+place at address mem:__ICFEDIT_intvec_start__ { section .intvec };
+place at address mem:0x2FC { section CRPKEY };
+place in RAM_region     { readwrite,
+                          block CSTACK, block HEAP/*, block RAMCODE*/
+                          };
+place in ROM_region     { readonly };
+place in AHB_RAM_region { section USB_RAM };

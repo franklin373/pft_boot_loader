@@ -99,7 +99,7 @@
         </option>
         <option>
           <name>OGChipSelectEditMenu</name>
-          <state>LPC1768	NXP LPC1768</state>
+          <state>LPC1788	NXP LPC1788</state>
         </option>
         <option>
           <name>GenLowLevelInterface</name>
@@ -300,6 +300,9 @@
           <state>$PROJ_DIR$\..</state>
           <state>$PROJ_DIR$\..\include</state>
           <state>$PROJ_DIR$\..\drv\SysSupport</state>
+          <state>$PROJ_DIR$\..\app</state>
+          <state>$PROJ_DIR$\..\drv</state>
+          <state>$PROJ_DIR$\..\drv\cmsis_inc</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -566,7 +569,7 @@
         <option>
           <name>OOCOutputFormat</name>
           <version>2</version>
-          <state>0</state>
+          <state>2</state>
         </option>
         <option>
           <name>OCOutputOverride</name>
@@ -574,7 +577,7 @@
         </option>
         <option>
           <name>OOCOutputFile</name>
-          <state>P50_BootLoader.srec</state>
+          <state>P50_BootLoader.bin</state>
         </option>
         <option>
           <name>OOCCommandLineProducer</name>
@@ -582,7 +585,7 @@
         </option>
         <option>
           <name>OOCObjCopyEnable</name>
-          <state>0</state>
+          <state>1</state>
         </option>
       </data>
     </settings>
@@ -692,7 +695,7 @@
         </option>
         <option>
           <name>IlinkIcfFile</name>
-          <state>$PROJ_DIR$\ldscript_irom_iar.icf</state>
+          <state>$PROJ_DIR$\ldscript_irom_ram_iar.icf</state>
         </option>
         <option>
           <name>IlinkIcfFileSlave</name>
@@ -1848,15 +1851,75 @@
     </file>
   </group>
   <group>
-    <name>drv_clkpwr</name>
+    <name>app_misc</name>
     <file>
-      <name>$PROJ_DIR$\..\drv\clkpwr\lpc177x_8x_clkpwr.c</name>
+      <name>$PROJ_DIR$\..\app\misc\assert_mine.c</name>
     </file>
   </group>
   <group>
-    <name>drv_pin</name>
+    <name>app_protocol</name>
     <file>
-      <name>$PROJ_DIR$\..\drv\pin\lpc177x_8x_pinsel.c</name>
+      <name>$PROJ_DIR$\..\app\protocol\P25_protocol.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\app\protocol\P25_protocol_msr.c</name>
+    </file>
+  </group>
+  <group>
+    <name>app_rcv_single_buf</name>
+    <file>
+      <name>$PROJ_DIR$\..\app\rcv_single_buf\cb_4_rcv_intr.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\app\rcv_single_buf\tf_rcv_single_buf.c</name>
+    </file>
+  </group>
+  <group>
+    <name>app_taskfrag</name>
+    <file>
+      <name>$PROJ_DIR$\..\app\taskfrag\tf_core.c</name>
+    </file>
+  </group>
+  <group>
+    <name>drv_cmsis_src</name>
+    <file>
+      <name>$PROJ_DIR$\..\drv\cmsis_src\debug_frmwrk.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\drv\cmsis_src\lpc177x_8x_clkpwr.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\drv\cmsis_src\lpc177x_8x_emc.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\drv\cmsis_src\lpc177x_8x_pinsel.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\drv\cmsis_src\lpc177x_8x_systick.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\drv\cmsis_src\lpc177x_8x_timer.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\drv\cmsis_src\lpc177x_8x_uart.c</name>
+    </file>
+  </group>
+  <group>
+    <name>drv_flash</name>
+    <file>
+      <name>$PROJ_DIR$\..\drv\flash\flash_1788.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\drv\flash\flash_facade.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\drv\flash\flash_sst39vf6401b.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\drv\flash\IAP.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\drv\flash\norflash_sst39vf6401b.c</name>
     </file>
   </group>
   <group>
@@ -1871,13 +1934,31 @@
       <name>$PROJ_DIR$\..\drv\SysSupport\core_cm3.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\..\drv\SysSupport\os_cpu_a.asm</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\drv\SysSupport\system_LPC177x_8x.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\drv\SysSupport\system_manu_cp.c</name>
+    </file>
+  </group>
+  <group>
+    <name>drv_tick</name>
+    <file>
+      <name>$PROJ_DIR$\..\drv\tick\tick.c</name>
     </file>
   </group>
   <group>
     <name>drv_uart</name>
     <file>
-      <name>$PROJ_DIR$\..\drv\uart\lpc177x_8x_uart.c</name>
+      <name>$PROJ_DIR$\..\drv\uart\comm_api.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\drv\uart\uartDrv.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\drv\uart\uartInt.c</name>
     </file>
   </group>
 </project>

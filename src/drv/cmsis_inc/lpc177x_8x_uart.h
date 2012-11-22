@@ -505,7 +505,7 @@ typedef struct {
 /* UART Init/DeInit functions --------------------------------------------------*/
 void UART_Init(LPC_UART_TypeDef *UARTx, UART_CFG_Type *UART_ConfigStruct);
 void UART_DeInit(LPC_UART_TypeDef* UARTx);
-void UART_ConfigStructInit(UART_CFG_Type *UART_InitStruct);
+void UART_ConfigStructInit(UART_CFG_Type *UART_InitStruct,int baud_rate);
 
 /* UART Send/Receive functions -------------------------------------------------*/
 void UART_SendByte(LPC_UART_TypeDef* UARTx, uint8_t Data);
