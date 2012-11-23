@@ -8,4 +8,5 @@
 *.d
 *.hex
 *.bak
+*.log
 Obj/

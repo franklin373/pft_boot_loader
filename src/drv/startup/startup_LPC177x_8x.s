@@ -46,7 +46,7 @@
 
         EXTERN  __iar_program_start
         EXTERN  SystemInit
-        EXTERN  system_manu_cp
+;        EXTERN  system_manu_cp
         PUBLIC  __vector_table
         PUBLIC  __vector_table_0x1c
         PUBLIC  __Vectors
@@ -57,66 +57,66 @@
 
 __vector_table
         DCD     sfe(CSTACK)
-        DCD     Reset_Handler
+        DCD     Reset_Handler_ROM
 
-        DCD     NMI_Handler
-        DCD     HardFault_Handler
-        DCD     MemManage_Handler
-        DCD     BusFault_Handler
-        DCD     UsageFault_Handler
+        DCD     NMI_Handler_ROM
+        DCD     HardFault_Handler_ROM
+        DCD     MemManage_Handler_ROM
+        DCD     BusFault_Handler_ROM
+        DCD     UsageFault_Handler_ROM
 __vector_table_0x1c
         DCD     0
         DCD     0
         DCD     0
         DCD     0
-        DCD     SVC_Handler
-        DCD     DebugMon_Handler
+        DCD     SVC_Handler_ROM
+        DCD     DebugMon_Handler_ROM
         DCD     0
-        DCD     PendSV_Handler
-        DCD     SysTick_Handler
+        DCD     PendSV_Handler_ROM
+        DCD     SysTick_Handler_ROM
 
         ; External Interrupts
-        DCD     WDT_IRQHandler            ; 16: Watchdog Timer
-        DCD     TIMER0_IRQHandler         ; 17: Timer0
-        DCD     TIMER1_IRQHandler         ; 18: Timer1
-        DCD     TIMER2_IRQHandler         ; 19: Timer2
-        DCD     TIMER3_IRQHandler         ; 20: Timer3
-        DCD     UART0_IRQHandler          ; 21: UART0
-        DCD     UART1_IRQHandler          ; 22: UART1
-        DCD     UART2_IRQHandler          ; 23: UART2
-        DCD     UART3_IRQHandler          ; 24: UART3
-        DCD     PWM1_IRQHandler           ; 25: PWM1
-        DCD     I2C0_IRQHandler           ; 26: I2C0
-        DCD     I2C1_IRQHandler           ; 27: I2C1
-        DCD     I2C2_IRQHandler           ; 28: I2C2
-        DCD     SPIFI_IRQHandler          ; 29: SPIFI
-        DCD     SSP0_IRQHandler           ; 30: SSP0
-        DCD     SSP1_IRQHandler           ; 31: SSP1
-        DCD     PLL0_IRQHandler           ; 32: PLL0 Lock (Main PLL)
-        DCD     RTC_IRQHandler            ; 33: Real Time Clock
-        DCD     EINT0_IRQHandler          ; 34: External Interrupt 0
-        DCD     EINT1_IRQHandler          ; 35: External Interrupt 1
-        DCD     EINT2_IRQHandler          ; 36: External Interrupt 2
-        DCD     EINT3_IRQHandler          ; 37: External Interrupt 3
-        DCD     ADC_IRQHandler            ; 38: A/D Converter
-        DCD     BOD_IRQHandler            ; 39: Brown-Out Detect
-        DCD     USB_IRQHandler            ; 40: USB
-        DCD     CAN_IRQHandler            ; 41: CAN
-        DCD     DMA_IRQHandler            ; 42: General Purpose DMA
-        DCD     I2S_IRQHandler            ; 43: I2S
-        DCD     ENET_IRQHandler           ; 44: Ethernet
-        DCD	MCI_IRQHandler		  ; 45: MCI Card
-        DCD     MCPWM_IRQHandler          ; 46: Motor Control PWM
-	DCD     QEI_IRQHandler            ; 47: Quadrature Encoder Interface
-	DCD     PLL1_IRQHandler           ; 48: PLL1 Lock (USB PLL)
-	DCD	USBActivity_IRQHandler	  ; 49: USB Activity Interrupt
-	DCD	CANActivity_IRQHandler	  ; 50: CAN Activity Interrupt
-	DCD	UART4_IRQHandler          ; 51: UART4
-	DCD	SSP2_IRQHandler		  ; 52: SSP2
-	DCD	LCD_IRQHandler		  ; 53: LCD
-	DCD	GPIO_IRQHandler		  ; 54: GPIO
-	DCD	PWM0_IRQHandler		  ; 55: PWM0
-	DCD	EEPROM_IRQHandler	  ; 56: EEPROM
+        DCD     WDT_IRQHandler_ROM            ; 16: Watchdog Timer
+        DCD     TIMER0_IRQHandler_ROM         ; 17: Timer0
+        DCD     TIMER1_IRQHandler_ROM         ; 18: Timer1
+        DCD     TIMER2_IRQHandler_ROM         ; 19: Timer2
+        DCD     TIMER3_IRQHandler_ROM         ; 20: Timer3
+        DCD     UART0_IRQHandler_ROM          ; 21: UART0
+        DCD     UART1_IRQHandler_ROM          ; 22: UART1
+        DCD     UART2_IRQHandler_ROM          ; 23: UART2
+        DCD     UART3_IRQHandler_ROM          ; 24: UART3
+        DCD     PWM1_IRQHandler_ROM           ; 25: PWM1
+        DCD     I2C0_IRQHandler_ROM           ; 26: I2C0
+        DCD     I2C1_IRQHandler_ROM           ; 27: I2C1
+        DCD     I2C2_IRQHandler_ROM           ; 28: I2C2
+        DCD     SPIFI_IRQHandler_ROM          ; 29: SPIFI
+        DCD     SSP0_IRQHandler_ROM           ; 30: SSP0
+        DCD     SSP1_IRQHandler_ROM           ; 31: SSP1
+        DCD     PLL0_IRQHandler_ROM           ; 32: PLL0 Lock (Main PLL)
+        DCD     RTC_IRQHandler_ROM            ; 33: Real Time Clock
+        DCD     EINT0_IRQHandler_ROM          ; 34: External Interrupt 0
+        DCD     EINT1_IRQHandler_ROM          ; 35: External Interrupt 1
+        DCD     EINT2_IRQHandler_ROM          ; 36: External Interrupt 2
+        DCD     EINT3_IRQHandler_ROM          ; 37: External Interrupt 3
+        DCD     ADC_IRQHandler_ROM            ; 38: A/D Converter
+        DCD     BOD_IRQHandler_ROM            ; 39: Brown-Out Detect
+        DCD     USB_IRQHandler_ROM            ; 40: USB
+        DCD     CAN_IRQHandler_ROM            ; 41: CAN
+        DCD     DMA_IRQHandler_ROM            ; 42: General Purpose DMA
+        DCD     I2S_IRQHandler_ROM            ; 43: I2S
+        DCD     ENET_IRQHandler_ROM           ; 44: Ethernet
+        DCD	MCI_IRQHandler_ROM		  ; 45: MCI Card
+        DCD     MCPWM_IRQHandler_ROM          ; 46: Motor Control PWM
+	DCD     QEI_IRQHandler_ROM            ; 47: Quadrature Encoder Interface
+	DCD     PLL1_IRQHandler_ROM           ; 48: PLL1 Lock (USB PLL)
+	DCD	USBActivity_IRQHandler_ROM	  ; 49: USB Activity Interrupt
+	DCD	CANActivity_IRQHandler_ROM	  ; 50: CAN Activity Interrupt
+	DCD	UART4_IRQHandler_ROM          ; 51: UART4
+	DCD	SSP2_IRQHandler_ROM		  ; 52: SSP2
+	DCD	LCD_IRQHandler_ROM		  ; 53: LCD
+	DCD	GPIO_IRQHandler_ROM		  ; 54: GPIO
+	DCD	PWM0_IRQHandler_ROM		  ; 55: PWM0
+	DCD	EEPROM_IRQHandler_ROM	  ; 56: EEPROM
 
 
 
@@ -133,265 +133,265 @@ __Vectors_Size 	EQU 	__Vectors_End - __Vectors
 ;;
         THUMB
 
-        PUBWEAK Reset_Handler
+        PUBWEAK Reset_Handler_ROM
         SECTION .text:CODE:REORDER(2)
-Reset_Handler
+Reset_Handler_ROM
         LDR     R0, =SystemInit
         BLX     R0
-        LDR     R0, =system_manu_cp
-        BLX     R0
+;        LDR     R0, =system_manu_cp
+;        BLX     R0
         LDR     R0, =__iar_program_start
         BX      R0
 
-        PUBWEAK NMI_Handler
+        PUBWEAK NMI_Handler_ROM
         SECTION .text:CODE:REORDER(1)
-NMI_Handler
-        B NMI_Handler
+NMI_Handler_ROM
+        B NMI_Handler_ROM
 
-        PUBWEAK HardFault_Handler
+        PUBWEAK HardFault_Handler_ROM
         SECTION .text:CODE:REORDER(1)
-HardFault_Handler
-        B HardFault_Handler
+HardFault_Handler_ROM
+        B HardFault_Handler_ROM
 
-        PUBWEAK MemManage_Handler
+        PUBWEAK MemManage_Handler_ROM
         SECTION .text:CODE:REORDER(1)
-MemManage_Handler
-        B MemManage_Handler
+MemManage_Handler_ROM
+        B MemManage_Handler_ROM
 
-        PUBWEAK BusFault_Handler
+        PUBWEAK BusFault_Handler_ROM
         SECTION .text:CODE:REORDER(1)
-BusFault_Handler
-        B BusFault_Handler
+BusFault_Handler_ROM
+        B BusFault_Handler_ROM
 
-        PUBWEAK UsageFault_Handler
+        PUBWEAK UsageFault_Handler_ROM
         SECTION .text:CODE:REORDER(1)
-UsageFault_Handler
-        B UsageFault_Handler
+UsageFault_Handler_ROM
+        B UsageFault_Handler_ROM
 
-        PUBWEAK SVC_Handler
+        PUBWEAK SVC_Handler_ROM
         SECTION .text:CODE:REORDER(1)
-SVC_Handler
-        B SVC_Handler
+SVC_Handler_ROM
+        B SVC_Handler_ROM
 
-        PUBWEAK DebugMon_Handler
+        PUBWEAK DebugMon_Handler_ROM
         SECTION .text:CODE:REORDER(1)
-DebugMon_Handler
-        B DebugMon_Handler
+DebugMon_Handler_ROM
+        B DebugMon_Handler_ROM
 
-        PUBWEAK PendSV_Handler
+        PUBWEAK PendSV_Handler_ROM
         SECTION .text:CODE:REORDER(1)
-PendSV_Handler
-        B PendSV_Handler
+PendSV_Handler_ROM
+        B PendSV_Handler_ROM
 
-        PUBWEAK SysTick_Handler
+        PUBWEAK SysTick_Handler_ROM
         SECTION .text:CODE:REORDER(1)
-SysTick_Handler
-        B SysTick_Handler
+SysTick_Handler_ROM
+        B SysTick_Handler_ROM
 
-        PUBWEAK WDT_IRQHandler
+        PUBWEAK WDT_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-WDT_IRQHandler
-        B WDT_IRQHandler
+WDT_IRQHandler_ROM
+        B WDT_IRQHandler_ROM
 
-        PUBWEAK TIMER0_IRQHandler
+        PUBWEAK TIMER0_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-TIMER0_IRQHandler
-        B TIMER0_IRQHandler
+TIMER0_IRQHandler_ROM
+        B TIMER0_IRQHandler_ROM
 
-        PUBWEAK TIMER1_IRQHandler
+        PUBWEAK TIMER1_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-TIMER1_IRQHandler
-        B TIMER1_IRQHandler
+TIMER1_IRQHandler_ROM
+        B TIMER1_IRQHandler_ROM
 
-        PUBWEAK TIMER2_IRQHandler
+        PUBWEAK TIMER2_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-TIMER2_IRQHandler
-        B TIMER2_IRQHandler
+TIMER2_IRQHandler_ROM
+        B TIMER2_IRQHandler_ROM
 
-        PUBWEAK TIMER3_IRQHandler
+        PUBWEAK TIMER3_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-TIMER3_IRQHandler
-        B TIMER3_IRQHandler
+TIMER3_IRQHandler_ROM
+        B TIMER3_IRQHandler_ROM
 
-        PUBWEAK UART0_IRQHandler
+        PUBWEAK UART0_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-UART0_IRQHandler
-        B UART0_IRQHandler
+UART0_IRQHandler_ROM
+        B UART0_IRQHandler_ROM
 
-        PUBWEAK UART1_IRQHandler
+        PUBWEAK UART1_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-UART1_IRQHandler
-        B UART1_IRQHandler
+UART1_IRQHandler_ROM
+        B UART1_IRQHandler_ROM
 
-        PUBWEAK UART2_IRQHandler
+        PUBWEAK UART2_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-UART2_IRQHandler
-        B UART2_IRQHandler
+UART2_IRQHandler_ROM
+        B UART2_IRQHandler_ROM
 
-        PUBWEAK UART3_IRQHandler
+        PUBWEAK UART3_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-UART3_IRQHandler
-        B UART3_IRQHandler
+UART3_IRQHandler_ROM
+        B UART3_IRQHandler_ROM
 
-        PUBWEAK PWM1_IRQHandler
+        PUBWEAK PWM1_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-PWM1_IRQHandler
-        B PWM1_IRQHandler
+PWM1_IRQHandler_ROM
+        B PWM1_IRQHandler_ROM
 
-        PUBWEAK I2C0_IRQHandler
+        PUBWEAK I2C0_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-I2C0_IRQHandler
-        B I2C0_IRQHandler
+I2C0_IRQHandler_ROM
+        B I2C0_IRQHandler_ROM
 
-        PUBWEAK I2C1_IRQHandler
+        PUBWEAK I2C1_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-I2C1_IRQHandler
-        B I2C1_IRQHandler
+I2C1_IRQHandler_ROM
+        B I2C1_IRQHandler_ROM
 
-        PUBWEAK I2C2_IRQHandler
+        PUBWEAK I2C2_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-I2C2_IRQHandler
-        B I2C2_IRQHandler
+I2C2_IRQHandler_ROM
+        B I2C2_IRQHandler_ROM
 
-        PUBWEAK SPIFI_IRQHandler
+        PUBWEAK SPIFI_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-SPIFI_IRQHandler
-        B SPIFI_IRQHandler
+SPIFI_IRQHandler_ROM
+        B SPIFI_IRQHandler_ROM
 
-        PUBWEAK SSP0_IRQHandler
+        PUBWEAK SSP0_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-SSP0_IRQHandler
-        B SSP0_IRQHandler
+SSP0_IRQHandler_ROM
+        B SSP0_IRQHandler_ROM
 
-        PUBWEAK SSP1_IRQHandler
+        PUBWEAK SSP1_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-SSP1_IRQHandler
-        B SSP1_IRQHandler
+SSP1_IRQHandler_ROM
+        B SSP1_IRQHandler_ROM
 
-        PUBWEAK PLL0_IRQHandler
+        PUBWEAK PLL0_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-PLL0_IRQHandler
-        B PLL0_IRQHandler
+PLL0_IRQHandler_ROM
+        B PLL0_IRQHandler_ROM
 
-        PUBWEAK RTC_IRQHandler
+        PUBWEAK RTC_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-RTC_IRQHandler
-        B RTC_IRQHandler
+RTC_IRQHandler_ROM
+        B RTC_IRQHandler_ROM
 
-        PUBWEAK EINT0_IRQHandler
+        PUBWEAK EINT0_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-EINT0_IRQHandler
-        B EINT0_IRQHandler
+EINT0_IRQHandler_ROM
+        B EINT0_IRQHandler_ROM
 
-        PUBWEAK EINT1_IRQHandler
+        PUBWEAK EINT1_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-EINT1_IRQHandler
-        B EINT1_IRQHandler
+EINT1_IRQHandler_ROM
+        B EINT1_IRQHandler_ROM
 
-        PUBWEAK EINT2_IRQHandler
+        PUBWEAK EINT2_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-EINT2_IRQHandler
-        B EINT2_IRQHandler
+EINT2_IRQHandler_ROM
+        B EINT2_IRQHandler_ROM
 
-        PUBWEAK EINT3_IRQHandler
+        PUBWEAK EINT3_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-EINT3_IRQHandler
-        B EINT3_IRQHandler
+EINT3_IRQHandler_ROM
+        B EINT3_IRQHandler_ROM
 
-        PUBWEAK ADC_IRQHandler
+        PUBWEAK ADC_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-ADC_IRQHandler
-        B ADC_IRQHandler
+ADC_IRQHandler_ROM
+        B ADC_IRQHandler_ROM
 
-        PUBWEAK BOD_IRQHandler
+        PUBWEAK BOD_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-BOD_IRQHandler
-        B BOD_IRQHandler
+BOD_IRQHandler_ROM
+        B BOD_IRQHandler_ROM
 
-        PUBWEAK USB_IRQHandler
+        PUBWEAK USB_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-USB_IRQHandler
-        B USB_IRQHandler
+USB_IRQHandler_ROM
+        B USB_IRQHandler_ROM
 
-        PUBWEAK CAN_IRQHandler
+        PUBWEAK CAN_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-CAN_IRQHandler
-        B CAN_IRQHandler
+CAN_IRQHandler_ROM
+        B CAN_IRQHandler_ROM
 
-        PUBWEAK DMA_IRQHandler
+        PUBWEAK DMA_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-DMA_IRQHandler
-        B DMA_IRQHandler
+DMA_IRQHandler_ROM
+        B DMA_IRQHandler_ROM
 
-        PUBWEAK I2S_IRQHandler
+        PUBWEAK I2S_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-I2S_IRQHandler
-        B I2S_IRQHandler
+I2S_IRQHandler_ROM
+        B I2S_IRQHandler_ROM
 
-        PUBWEAK ENET_IRQHandler
+        PUBWEAK ENET_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-ENET_IRQHandler
-        B ENET_IRQHandler
+ENET_IRQHandler_ROM
+        B ENET_IRQHandler_ROM
 
-        PUBWEAK MCI_IRQHandler
+        PUBWEAK MCI_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-MCI_IRQHandler
-        B MCI_IRQHandler
+MCI_IRQHandler_ROM
+        B MCI_IRQHandler_ROM
 
 ; PUBWEAK RIT_IRQHandler
-        PUBWEAK MCPWM_IRQHandler
+        PUBWEAK MCPWM_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-MCPWM_IRQHandler
-        B MCPWM_IRQHandler
+MCPWM_IRQHandler_ROM
+        B MCPWM_IRQHandler_ROM
 
-        PUBWEAK QEI_IRQHandler
+        PUBWEAK QEI_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-QEI_IRQHandler
-        B QEI_IRQHandler
+QEI_IRQHandler_ROM
+        B QEI_IRQHandler_ROM
 
-        PUBWEAK PLL1_IRQHandler
+        PUBWEAK PLL1_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-PLL1_IRQHandler
-        B PLL1_IRQHandler
+PLL1_IRQHandler_ROM
+        B PLL1_IRQHandler_ROM
 
-        PUBWEAK USBActivity_IRQHandler
+        PUBWEAK USBActivity_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-USBActivity_IRQHandler
-        B USBActivity_IRQHandler
+USBActivity_IRQHandler_ROM
+        B USBActivity_IRQHandler_ROM
 
-        PUBWEAK CANActivity_IRQHandler
+        PUBWEAK CANActivity_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-CANActivity_IRQHandler
-        B CANActivity_IRQHandler
+CANActivity_IRQHandler_ROM
+        B CANActivity_IRQHandler_ROM
 
-        PUBWEAK UART4_IRQHandler
+        PUBWEAK UART4_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-UART4_IRQHandler
-        B UART4_IRQHandler
+UART4_IRQHandler_ROM
+        B UART4_IRQHandler_ROM
 
-        PUBWEAK SSP2_IRQHandler
+        PUBWEAK SSP2_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-SSP2_IRQHandler
-        B SSP2_IRQHandler
+SSP2_IRQHandler_ROM
+        B SSP2_IRQHandler_ROM
 
-        PUBWEAK LCD_IRQHandler
+        PUBWEAK LCD_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-LCD_IRQHandler
-        B LCD_IRQHandler
+LCD_IRQHandler_ROM
+        B LCD_IRQHandler_ROM
 
-        PUBWEAK GPIO_IRQHandler
+        PUBWEAK GPIO_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-GPIO_IRQHandler
-        B GPIO_IRQHandler
+GPIO_IRQHandler_ROM
+        B GPIO_IRQHandler_ROM
 
-        PUBWEAK PWM0_IRQHandler
+        PUBWEAK PWM0_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-PWM0_IRQHandler
-        B PWM0_IRQHandler
+PWM0_IRQHandler_ROM
+        B PWM0_IRQHandler_ROM
 
-		PUBWEAK EEPROM_IRQHandler
+		PUBWEAK EEPROM_IRQHandler_ROM
         SECTION .text:CODE:REORDER(1)
-EEPROM_IRQHandler
-        B EEPROM_IRQHandler
+EEPROM_IRQHandler_ROM
+        B EEPROM_IRQHandler_ROM
 
         END

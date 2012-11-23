@@ -639,7 +639,7 @@
         </option>
         <option>
           <name>IlinkKeepSymbols</name>
-          <state></state>
+          <state>__vector_RAM_table</state>
         </option>
         <option>
           <name>IlinkRawBinaryFile</name>
@@ -671,23 +671,23 @@
         </option>
         <option>
           <name>IlinkLogFile</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>IlinkLogInitialization</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>IlinkLogModule</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>IlinkLogSection</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>IlinkLogVeneer</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>IlinkIcfOverride</name>
@@ -826,15 +826,15 @@
         </option>
         <option>
           <name>IlinkLogAutoLibSelect</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>IlinkLogRedirSymbols</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>IlinkLogUnusedFragments</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>IlinkCrcReverseByteOrder</name>
@@ -1926,6 +1926,9 @@
     <name>drv_startup</name>
     <file>
       <name>$PROJ_DIR$\..\drv\startup\startup_LPC177x_8x.s</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\drv\startup\startup_LPC177x_8x_ram.s</name>
     </file>
   </group>
   <group>

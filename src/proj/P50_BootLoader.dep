@@ -2,7 +2,7 @@
 
 <project>
   <fileVersion>2</fileVersion>
-  <fileChecksum>2703961666</fileChecksum>
+  <fileChecksum>754334632</fileChecksum>
   <configuration>
     <name>Flash</name>
     <outputs>
@@ -205,6 +205,9 @@
       <file>$PROJ_DIR$\Flash\Obj\fifo.pbi</file>
       <file>$PROJ_DIR$\Flash\List\P50_BootLoader.map</file>
       <file>$PROJ_DIR$\Flash\List\debug_frmwrk.i</file>
+      <file>$PROJ_DIR$\Flash\Obj\startup_LPC177x_8x_ram.o</file>
+      <file>$PROJ_DIR$\..\drv\startup\startup_LPC177x_8x_ram.s</file>
+      <file>$PROJ_DIR$\Flash\List\P50_BootLoader.log</file>
     </outputs>
     <file>
       <name>$PROJ_DIR$\..\app\protocol\P25_protocol.c</name>
@@ -372,7 +375,7 @@
       <outputs>
         <tool>
           <name>ILINK</name>
-          <file> 31 197</file>
+          <file> 31 197 201</file>
         </tool>
       </outputs>
     </file>
@@ -836,7 +839,7 @@
       <outputs>
         <tool>
           <name>ILINK</name>
-          <file> 197</file>
+          <file> 197 201</file>
         </tool>
         <tool>
           <name>OBJCOPY</name>
@@ -846,7 +849,7 @@
       <inputs>
         <tool>
           <name>ILINK</name>
-          <file> 175 146 134 130 190 179 102 99 89 32 118 138 29 157 149 123 132 143 108 36 107 158 63 166 116 98 110 105 46 155 94 30 96</file>
+          <file> 175 146 134 130 190 179 102 99 89 32 118 138 29 157 149 123 132 143 108 36 107 158 199 63 166 116 98 110 105 46 155 94 30 96</file>
         </tool>
       </inputs>
     </file>
@@ -1130,6 +1133,15 @@
         <tool>
           <name>AARM</name>
           <file> 35</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\drv\startup\startup_LPC177x_8x_ram.s</name>
+      <outputs>
+        <tool>
+          <name>AARM</name>
+          <file> 199</file>
         </tool>
       </outputs>
     </file>

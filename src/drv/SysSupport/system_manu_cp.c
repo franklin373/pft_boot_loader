@@ -1,5 +1,6 @@
 #include <string.h>
 
+#if 0
 #define RAM_START (0x10000000)
 /* copy all bytes between s (inclusive) and e (exclusive) to d */
 void system_manu_cp_activate(void * s, void * e, void * d)
@@ -23,3 +24,4 @@ void system_manu_cp(void)
   #pragma segment=".intvec"
   system_manu_cp_activate(__sfb(".intvec"), __sfe(".intvec"), (void *)RAM_START);
 }
+#endif
