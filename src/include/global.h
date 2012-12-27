@@ -123,6 +123,7 @@ int comm_init(int which_port,int baudrate,FUNC_CB_COMM_RCV cb_rcv);
 void myfputchar(int uartPortNr,uint8 ch);
 void tf_rcv_single_buf();
 void tick_init();
+void tf_per_tick();
 
 #endif
 /*********************************************************************************************************

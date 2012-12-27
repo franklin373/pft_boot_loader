@@ -8,18 +8,28 @@ define symbol __ICFEDIT_region_ROM_start__ = 0x00000000;
 define symbol __ICFEDIT_region_ROM_end__   = 0x0007FFFF;
 
 define symbol __ICFEDIT_intvec_start_RAM__ = 0x10000000;
-
+define symbol __ICFEDIT_region_RAM_start__   = 0x10000000;
+define symbol __ICFEDIT_region_RAM_end__     = 0x1000FFDF;
+/*
 define symbol __ICFEDIT_region_RAM_start__ = 0x10000140;
 define symbol __ICFEDIT_region_RAM_end__   = 0x1000FFFF;
+*/
 /*-Sizes-*/
 define symbol __ICFEDIT_size_cstack__ = 0x400;
 define symbol __ICFEDIT_size_heap__   = 0x200;
 /**** End of ICF editor section. ###ICF###*/
 
+
+define symbol __CRP_start__   = 0x000002FC;
+define symbol __CRP_end__     = 0x000002FF;
+
+
+
 define memory mem with size = 4G;
-define region ROM_region   = mem:[from __ICFEDIT_region_ROM_start__   to __ICFEDIT_region_ROM_end__];
+define region ROM_region   = mem:[from __ICFEDIT_region_ROM_start__   to __ICFEDIT_region_ROM_end__] -  mem:[from  __CRP_start__ to __CRP_end__];
 define region RAM_intvec_region = mem:[from __ICFEDIT_intvec_start_RAM__ to __ICFEDIT_region_RAM_start__ - 1];
 define region RAM_region   = mem:[from __ICFEDIT_region_RAM_start__   to __ICFEDIT_region_RAM_end__];
+define region CRP_region   = mem:[from __CRP_start__ to __CRP_end__];
 
 define symbol _AHB_RAM_start__  = 0x20080000;
 define symbol _AHB_RAM_end__    = 0x200BFFFF;
@@ -84,6 +94,7 @@ initialize by copy{
 */
 initialize by copy{readwrite,
 	ro object app_main.o,
+	ro object tf_per_tick.o,
 	ro object assert_mine.o,
 	ro object P25_protocol.o,
 	ro object P25_protocol_msr.o,
@@ -92,6 +103,7 @@ initialize by copy{readwrite,
 	ro object tf_core.o,
 	ro object lpc177x_8x_uart.o,
 	ro object lpc177x_8x_emc.o,
+	ro object lpc177x_8x_gpio.o,
 	ro object lpc177x_8x_pinsel.o,
 	ro object lpc177x_8x_systick.o,
 	ro object lpc177x_8x_timer.o,
@@ -127,7 +139,8 @@ do not initialize  { section .noinit };
 place at address mem:__ICFEDIT_intvec_start__ { section .intvec };
 place at address mem:__ICFEDIT_intvec_start_RAM__ { section .intvec_RAM };
 /*place in RAM_intvec_region { section .intvec_RAM};*/
-place at address mem:0x2FC { section CRPKEY };
+/*place at address mem:0x2FC { section CRPKEY };*/
+place in CRP_region  	{ section .crp };
 place in RAM_region     { readwrite,
                           block CSTACK, block HEAP/*, block RAMCODE*/
                           };

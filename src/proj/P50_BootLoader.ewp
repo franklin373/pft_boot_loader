@@ -300,6 +300,7 @@
           <state>$PROJ_DIR$\..</state>
           <state>$PROJ_DIR$\..\include</state>
           <state>$PROJ_DIR$\..\drv\SysSupport</state>
+          <state>$PROJ_DIR$\..\drv\inc_drv</state>
           <state>$PROJ_DIR$\..\app</state>
           <state>$PROJ_DIR$\..\drv</state>
           <state>$PROJ_DIR$\..\drv\cmsis_inc</state>
@@ -1849,6 +1850,9 @@
     <file>
       <name>$PROJ_DIR$\..\app\main\app_main.c</name>
     </file>
+    <file>
+      <name>$PROJ_DIR$\..\app\main\tf_per_tick.c</name>
+    </file>
   </group>
   <group>
     <name>app_misc</name>
@@ -1892,6 +1896,9 @@
       <name>$PROJ_DIR$\..\drv\cmsis_src\lpc177x_8x_emc.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\..\drv\cmsis_src\lpc177x_8x_gpio.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\drv\cmsis_src\lpc177x_8x_pinsel.c</name>
     </file>
     <file>
@@ -1920,6 +1927,12 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\drv\flash\norflash_sst39vf6401b.c</name>
+    </file>
+  </group>
+  <group>
+    <name>drv_gpio</name>
+    <file>
+      <name>$PROJ_DIR$\..\drv\gpio\gpio_some.c</name>
     </file>
   </group>
   <group>

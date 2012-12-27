@@ -42,7 +42,7 @@ void TF_dispatch()
 	int i;
 
 	for(i=0;i<TF_DataArrayLen;i++){
-		if(TF_DataArray[i].trigger_tick>=OSTime){
+		if(TF_DataArray[i].trigger_tick<=OSTime){
 			TF_DataArray[i].func();
 			UINT32_ADD_SAFE_NO_OVERFLOW(TF_DataArray[i].trigger_tick,OSTime,TF_DataArray[i].period);
 		}

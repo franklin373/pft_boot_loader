@@ -23,6 +23,7 @@
 #include "rcv_single_buf/rcv_single_buf.h"
 #include "flash/norflash_sst39vf6401b.h"
 #include "flash/flash_common.h"
+#include "drv_gpio.h"
 
 /************************** PRIVATE DEFINTIONS *************************/
 
@@ -102,6 +103,16 @@ void UART_IntReceive(void);
 uint32_t UARTReceive(LPC_UART_TypeDef *UARTPort, uint8_t *rxbuf, uint8_t buflen);
 uint32_t UARTSend(LPC_UART_TypeDef *UARTPort, uint8_t *txbuf, uint8_t buflen);
 void print_menu(void);
+
+
+
+
+#define APPLICATION_LOCATION (0x00010000)
+typedef void (*AppMainFunc)();
+
+
+
+
 
 #if 0
 /*----------------- INTERRUPT SERVICE ROUTINES --------------------------*/
@@ -359,6 +370,7 @@ void print_menu(void)
 }
 struct tagTF_Define tf_define_array[]={
 	{1000/TICK_PERIOD,tf_rcv_single_buf},
+	{1,tf_per_tick},
 };
 /*-------------------------MAIN FUNCTION------------------------------*/
 /*********************************************************************//**
@@ -455,6 +467,14 @@ int c_entry(void)
 	/* Enable Interrupt for UART0 channel */
     NVIC_EnableIRQ(_UART_IRQ);
 #else
+	gpio_some_init();
+	if(TestFeedKey()==0){
+		AppMainFunc ApplicationStart;
+
+		ApplicationStart = (AppMainFunc)(*(uint32_t *)(APPLICATION_LOCATION+4)); //the entry of application.
+		__set_MSP(*(uint32_t *)APPLICATION_LOCATION);
+		ApplicationStart();
+	}
 	tick_init();
 //	pkg_fifo_init();
 	comm_init(PRN_DEV_WIRE,115200,cb_4_rcv_intr);
@@ -480,6 +500,15 @@ int c_entry(void)
 
 	
 	_DBG_("Program Starting...");
+
+#if 0
+_DBG("<dispKeyborad:GPIO5>");
+_DBH32(GPIO_ReadValue(5));
+_DBG("\r\n");
+#endif
+
+
+	
 	LPC_UartPrintf(PRN_DEV_LOG,"Init NOR Flash...\r\n");
 	LPC_UartPrintf(PRN_DEV_WIRE,"Init NOR Flash...\r\n");
     NORFLASHInit();
