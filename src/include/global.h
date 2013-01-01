@@ -98,7 +98,7 @@ void assert_mine(char *filename,int lineno,int value);
 
 #define TICK_PERIOD (10)
 #define  ARR_SIZE( a )  ( sizeof( (a) ) / sizeof( (a[0]) ) )
-
+#if 0
 typedef enum
 {
     PRN_DEV_WIRE,
@@ -116,11 +116,14 @@ struct tagUartDrvData{
 	FUNC_CB_COMM_RCV cb_rcv;
 };
 extern struct tagUartDrvData uartDrvDataArray[];
-void innerDeadNoOutput();
 extern int LPC_UartWrite( int uartPortNr, uint8 *  pBuf,uint32 numBytes);
 extern int LPC_UartPrintf(int uartPortNr, uint8 * pBuf);
 int comm_init(int which_port,int baudrate,FUNC_CB_COMM_RCV cb_rcv);
 void myfputchar(int uartPortNr,uint8 ch);
+#else
+#include "drv_uart.h"
+#endif
+void innerDeadNoOutput();
 void tf_rcv_single_buf();
 void tick_init();
 void tf_per_tick();

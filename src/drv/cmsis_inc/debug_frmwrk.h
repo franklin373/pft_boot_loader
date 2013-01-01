@@ -22,7 +22,7 @@
 
 #include "lpc177x_8x_uart.h"
 
-#define USED_UART_DEBUG_PORT	0   // 1
+#define USED_UART_DEBUG_PORT	2   // 1
 
 #define NUM_SKIPPED_ALLOWED			(10)
 
@@ -30,7 +30,7 @@
 #define DBG_GETVAL_IN_HEX			(1)
 //#define DBG_GETVAL_IN_CHARS			(2)
 
-#if 0
+#if 1
 #if (USED_UART_DEBUG_PORT == 0)
 #define DEBUG_UART_PORT	(LPC_UART_TypeDef *)LPC_UART0
 #elif (USED_UART_DEBUG_PORT == 1)

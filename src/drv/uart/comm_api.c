@@ -2,6 +2,7 @@
 #include "lpc177x_8x_clkpwr.h"
 #include "lpc177x_8x_pinsel.h"
 #include "global.h"
+#include "drv_uart_inner.h"
 
 //typedef void (*FUNC_CB_COMM_RCV)(uint8 *buf,int len);
 

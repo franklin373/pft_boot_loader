@@ -2,6 +2,7 @@
 #include "lpc177x_8x_clkpwr.h"
 #include "lpc177x_8x_pinsel.h"
 #include "global.h"
+#include "drv_uart_inner.h"
 
 #if 0
 struct tagUartDrvData{
