@@ -487,8 +487,8 @@ void debug_frmwrk_init(void)
 	 * P3.16: U1_TXD
 	 * P3.17: U1_RXD
 	 */
-	PINSEL_ConfigPin(3,16,3);
-	PINSEL_ConfigPin(3,17,3);
+	PINSEL_ConfigPin(0, 15, 1);
+	PINSEL_ConfigPin(0, 16, 1);
 #elif (USED_UART_DEBUG_PORT == 2)
 	/*
 	 * Initialize UART2 pin connect
@@ -497,6 +497,22 @@ void debug_frmwrk_init(void)
 	 */
 	PINSEL_ConfigPin(0,10,1);
 	PINSEL_ConfigPin(0,11,1);
+#elif (USED_UART_DEBUG_PORT == 3)
+	/*
+	 * Initialize UART3 pin connect
+	 * P0.2: TXD
+	 * P0.3: RXD
+	 */
+	PINSEL_ConfigPin(0, 2, 2);
+	PINSEL_ConfigPin(0, 3, 2);
+#elif (USED_UART_DEBUG_PORT == 4)
+	/*
+	 * Initialize UART4 pin connect
+	 * P0.22: TXD
+	 * P2.9: RXD
+	 */
+	PINSEL_ConfigPin(0, 22, 3);
+	PINSEL_ConfigPin(2, 9, 3);
 
 #endif
 

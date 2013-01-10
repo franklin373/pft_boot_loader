@@ -59,8 +59,8 @@ int comm_init(int which_port,int baudrate,FUNC_CB_COMM_RCV cb_rcv)
 		 * P3.16: U1_TXD
 		 * P3.17: U1_RXD
 		 */
-		PINSEL_ConfigPin(3,16,3);
-		PINSEL_ConfigPin(3,17,3);
+		PINSEL_ConfigPin(0, 15, 1);
+		PINSEL_ConfigPin(0, 16, 1);
 	}else if(which_port == 2){
 		/*
 		 * Initialize UART2 pin connect
