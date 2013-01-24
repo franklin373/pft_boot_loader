@@ -28,7 +28,7 @@ void gbLedOff()
 {
 	GPIO_ClearValue(4, (1<<22));
 }
-void keyborad_init(void)
+void KeyInit(void)
 {
     GPIO_SetDir(5, (1<<0), 0);
     GPIO_SetDir(5, (1<<1), 0);
@@ -42,6 +42,6 @@ int TestFeedKey()
 void gpio_some_init()
 {
 	led_init();
-	keyborad_init();
+	KeyInit();
 }
 
