@@ -1971,7 +1971,7 @@
       <name>$PROJ_DIR$\..\drv\uart\comm_api.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\drv\uart\uartDrv.c</name>
+      <name>$PROJ_DIR$\..\drv\uart\uartBsp.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\drv\uart\uartInt.c</name>
