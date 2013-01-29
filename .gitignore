@@ -9,4 +9,6 @@
 *.hex
 *.bak
 *.log
+*.od
 Obj/
+work/
